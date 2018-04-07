@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'rmwc/Button';
 
 class App extends Component {
   render() {
@@ -7,6 +8,7 @@ class App extends Component {
         <header>
           <h1>BBQ-Arduino-CRA</h1>
         </header>
+        <Button>RMWC Button</Button>
       </div>
     );
   }
