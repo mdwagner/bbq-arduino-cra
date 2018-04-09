@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
-import Button from 'rmwc/Button';
+import Pages from './pages';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLogin: false
+    };
+    this.handleHomePageClick = this.handleHomePageClick.bind(this);
+  }
+
+  handleHomePageClick() {
+    this.setState(prevState => {
+      return Object.assign(
+        {},
+        prevState,
+        {
+          showLogin: !prevState.showLogin
+        }
+      );
+    });
+  }
+
   render() {
+    const { showLogin } = this.state;
     return (
       <div>
-        <header>
-          <h1>BBQ-Arduino-CRA</h1>
-        </header>
-        <Button>RMWC Button</Button>
+        {showLogin ?
+          <Pages.LoginPage prev={this.handleHomePageClick} />
+          :
+          <Pages.HomePage next={this.handleHomePageClick} />
+        }
       </div>
     );
   }
